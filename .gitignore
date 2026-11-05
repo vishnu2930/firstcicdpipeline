@@ -2,3 +2,4 @@
 cicd_venv/
 temp/
 Dockerfile
+get-config.py
