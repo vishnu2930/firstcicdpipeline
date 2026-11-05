@@ -1,0 +1,15 @@
+kind: pipeline
+type: docker
+name: Testing python CI/CD
+
+steps:
+- name: Check IP interfaces
+  image: vishnu2930/netauto
+  environment:
+    PASSWORD:
+      from_secret: PASSWORD
+    USER:
+      from_secret: USER
+  commands:
+  # - pip install -r requirements.txt
+  - python3 checkip.py
