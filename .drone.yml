@@ -10,6 +10,8 @@ steps:
       from_secret: PASSWORD
     USER:
       from_secret: USER
+    ENABLE_PASSWORD:
+      from_secret: ENABLE_PASSWORD
   commands:
   # - pip install -r requirements.txt
   - python3 checkip.py

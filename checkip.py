@@ -1,7 +1,8 @@
 import os
 from netmiko import ConnectHandler
-# user=os.environ["USER"]
-# password=os.environ["PASSWORD"]
+user=os.environ["USER"]
+password=os.environ["PASSWORD"]
+enable_password=os.environ["ENABLE_PASSWORD"]
 ios_device={
     "device_type":"cisco_ios",
     "ip":"10.10.20.171",
