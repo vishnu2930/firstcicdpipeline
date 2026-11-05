@@ -3,6 +3,11 @@ type: docker
 name: Testing python CI/CD
 
 steps:
+- name: Black code format check
+  image: vishnu2930/netauto
+  commands:
+  - black . --check
+
 - name: Check IP interfaces
   image: vishnu2930/netauto
   environment:
