@@ -20,7 +20,7 @@ def deploy_network(task):
     task1_result = task.run(
         name=f"Configuring {task.host.name}!",
         task=napalm_configure,
-        filename=f"./snapshots/snapshots00/configs/{task.host.name}.txt",
+        filename=f"./snapshots/snapshot00/configs/{task.host.name}.txt",
         dry_run=args.dry,
         replace=True,
     )
@@ -29,7 +29,7 @@ def deploy_network(task):
 def main():
     """Used to run all the things"""
     norn = InitNornir(config_file="configs/config.yaml", core={"raise_on_error": True})
-    nornir_set_creds(norn)
+    # nornir_set_creds(norn)
     result = norn.run(task=deploy_network)
     print_result(result)
 

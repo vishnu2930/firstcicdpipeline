@@ -4,6 +4,7 @@ inventory:
   options:
     host_file: "./configs/hosts.yaml"
     group_file: "./configs/groups.yaml"
+    defaults_file: "./configs/default.yaml"
 runner:
   plugin: threaded
   options:

@@ -212,3 +212,342 @@ Traceback (most recent call last):
     raise NornirSubTaskError(task=run_task, result=r)
 nornir.core.exceptions.NornirSubTaskError: Subtask: Configuring R1! (failed)
 
+2026-11-06 19:39:55,831 -  nornir.core -     INFO -        run() - Running task 'deploy_network' with args {} on 1 hosts
+2026-11-06 19:39:56,092 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'Configuring R1!' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/paramiko/client.py", line 477, in connect
+    self._auth(
+    ~~~~~~~~~~^
+        username,
+        ^^^^^^^^^
+    ...<5 lines>...
+        passphrase,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/paramiko/client.py", line 780, in _auth
+    raise SSHException("No authentication methods available")
+paramiko.ssh_exception.SSHException: No authentication methods available
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/base/base.py", line 114, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+                           ~~~~~~~~~~~~~~^
+        device_type=device_type,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **netmiko_optional_args,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+    ~~~~~~~~~~^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 1206, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: 
+A paramiko SSHException occurred during connection creation:
+
+No authentication methods available
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 31, in napalm_configure
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+    ~~~~~~~~~~~~~~~~~~~~^
+        connection=connection,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        extras=conn.extras,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+    ~~~~~~~~~~~~~^
+        hostname=hostname,
+        ^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        configuration=configuration,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir_napalm/plugins/connections/__init__.py", line 55, in open
+    connection.open()
+    ~~~~~~~~~~~~~~~^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 168, in open
+    self.device = self._netmiko_open(
+                  ~~~~~~~~~~~~~~~~~~^
+        device_type, netmiko_optional_args=self.netmiko_optional_args
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/base/base.py", line 123, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 10.10.20.171
+2026-11-06 19:39:56,095 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'deploy_network' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/build.py", line 20, in deploy_network
+    task1_result = task.run(
+        name=f"Configuring {task.host.name}!",
+    ...<3 lines>...
+        replace=True,
+    )
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: Configuring R1! (failed)
+
+2026-11-06 19:46:20,331 -  nornir.core -     INFO -        run() - Running task 'deploy_network' with args {} on 1 hosts
+2026-11-06 19:46:20,634 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'Configuring rtr1!' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 1153, in establish_connection
+    self.remote_conn_pre.connect(**ssh_connect_params)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/paramiko/client.py", line 477, in connect
+    self._auth(
+    ~~~~~~~~~~^
+        username,
+        ^^^^^^^^^
+    ...<5 lines>...
+        passphrase,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/paramiko/client.py", line 780, in _auth
+    raise SSHException("No authentication methods available")
+paramiko.ssh_exception.SSHException: No authentication methods available
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/base/base.py", line 114, in _netmiko_open
+    self._netmiko_device = ConnectHandler(
+                           ~~~~~~~~~~~~~~^
+        device_type=device_type,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        **netmiko_optional_args,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/ssh_dispatcher.py", line 516, in ConnectHandler
+    return ConnectionClass(*args, **kwargs)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 491, in __init__
+    self._open()
+    ~~~~~~~~~~^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 509, in _open
+    self.establish_connection()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/base_connection.py", line 1206, in establish_connection
+    raise NetmikoTimeoutException(msg)
+netmiko.exceptions.NetmikoTimeoutException: 
+A paramiko SSHException occurred during connection creation:
+
+No authentication methods available
+
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 31, in napalm_configure
+    device = task.host.get_connection(CONNECTION_NAME, task.nornir.config)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/inventory.py", line 600, in get_connection
+    self.open_connection(
+    ~~~~~~~~~~~~~~~~~~~~^
+        connection=connection,
+        ^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        extras=conn.extras,
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/inventory.py", line 654, in open_connection
+    conn_obj.open(
+    ~~~~~~~~~~~~~^
+        hostname=hostname,
+        ^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        configuration=configuration,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir_napalm/plugins/connections/__init__.py", line 55, in open
+    connection.open()
+    ~~~~~~~~~~~~~~~^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 168, in open
+    self.device = self._netmiko_open(
+                  ~~~~~~~~~~~~~~~~~~^
+        device_type, netmiko_optional_args=self.netmiko_optional_args
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/base/base.py", line 123, in _netmiko_open
+    raise ConnectionException("Cannot connect to {}".format(self.hostname))
+napalm.base.exceptions.ConnectionException: Cannot connect to 10.10.20.171
+2026-11-06 19:46:20,639 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'deploy_network' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/build.py", line 20, in deploy_network
+    task1_result = task.run(
+        name=f"Configuring {task.host.name}!",
+    ...<3 lines>...
+        replace=True,
+    )
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: Configuring rtr1! (failed)
+
+2026-11-06 20:17:42,238 -  nornir.core -     INFO -        run() - Running task 'deploy_network' with args {} on 1 hosts
+2026-11-06 20:17:44,369 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'Configuring rtr1!' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 34, in napalm_configure
+    device.load_replace_candidate(filename=filename, config=configuration)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 299, in load_replace_candidate
+    return_status, msg = self._load_candidate_wrapper(
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        source_file=filename,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        file_system=self.dest_file_system,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 282, in _load_candidate_wrapper
+    (return_status, msg) = self._scp_file(
+                           ~~~~~~~~~~~~~~^
+        source_file=source_file,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        dest_file=dest_file,
+        ^^^^^^^^^^^^^^^^^^^^
+        file_system=file_system,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 718, in _scp_file
+    return self._xfer_file(
+           ~~~~~~~~~~~~~~~^
+        source_file=source_file,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        TransferClass=FileTransfer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 768, in _xfer_file
+    with TransferClass(**kwargs) as transfer:
+         ~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/ssh_dispatcher.py", line 646, in FileTransfer
+    return FileTransferClass(*args, **kwargs)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/scp_handler.py", line 109, in __init__
+    self.source_md5 = self.file_md5(source_file) if hash_supported else None
+                      ~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/scp_handler.py", line 333, in file_md5
+    with open(file_name, "rb") as f:
+         ~~~~^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './snapshots/snapshots00/configs/rtr1.txt'
+2026-11-06 20:17:44,378 - nornir.core.task -    ERROR -      start() - Host 'rtr1': task 'deploy_network' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/build.py", line 20, in deploy_network
+    task1_result = task.run(
+        name=f"Configuring {task.host.name}!",
+    ...<3 lines>...
+        replace=True,
+    )
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: Configuring rtr1! (failed)
+
+2026-11-06 20:18:18,548 -  nornir.core -     INFO -        run() - Running task 'deploy_network' with args {} on 1 hosts
+2026-11-06 20:18:20,621 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'Configuring R1!' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 34, in napalm_configure
+    device.load_replace_candidate(filename=filename, config=configuration)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 299, in load_replace_candidate
+    return_status, msg = self._load_candidate_wrapper(
+                         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        source_file=filename,
+        ^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        file_system=self.dest_file_system,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 282, in _load_candidate_wrapper
+    (return_status, msg) = self._scp_file(
+                           ~~~~~~~~~~~~~~^
+        source_file=source_file,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+        dest_file=dest_file,
+        ^^^^^^^^^^^^^^^^^^^^
+        file_system=file_system,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 718, in _scp_file
+    return self._xfer_file(
+           ~~~~~~~~~~~~~~~^
+        source_file=source_file,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        TransferClass=FileTransfer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 768, in _xfer_file
+    with TransferClass(**kwargs) as transfer:
+         ~~~~~~~~~~~~~^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/ssh_dispatcher.py", line 646, in FileTransfer
+    return FileTransferClass(*args, **kwargs)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/scp_handler.py", line 109, in __init__
+    self.source_md5 = self.file_md5(source_file) if hash_supported else None
+                      ~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/netmiko/scp_handler.py", line 333, in file_md5
+    with open(file_name, "rb") as f:
+         ~~~~^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: './snapshots/snapshots00/configs/R1.txt'
+2026-11-06 20:18:20,623 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'deploy_network' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/build.py", line 20, in deploy_network
+    task1_result = task.run(
+        name=f"Configuring {task.host.name}!",
+    ...<3 lines>...
+        replace=True,
+    )
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: Configuring R1! (failed)
+
+2026-11-06 20:18:52,561 -  nornir.core -     INFO -        run() - Running task 'deploy_network' with args {} on 1 hosts

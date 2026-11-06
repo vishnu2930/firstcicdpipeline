@@ -2,4 +2,4 @@
 R1:
   hostname: 10.10.20.171
   groups:
-    - ios
+    - cisco_group
