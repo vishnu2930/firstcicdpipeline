@@ -1,4 +1,3 @@
-
 """Script used to test network configurations with Batfish."""
 
 import os
@@ -19,9 +18,7 @@ console = Console(color_system="truecolor")
 
 def test_duplicate_rtr_ids(snap, bf):
     """Test for duplicate router IDs."""
-    console.print(
-        "\n[bold yellow]Testing for duplicate router IDs[/bold yellow]"
-    )
+    console.print("\n[bold yellow]Testing for duplicate router IDs[/bold yellow]")
 
     assert_no_duplicate_router_ids(
         snapshot=snap,
@@ -29,73 +26,55 @@ def test_duplicate_rtr_ids(snap, bf):
         session=bf,
     )
 
-    console.print(
-        "[bold green]No duplicate router IDs found[/bold green]"
-    )
+    console.print("[bold green]No duplicate router IDs found[/bold green]")
 
 
 def test_bgp_compatibility(snap, bf):
     """Test for incompatible BGP sessions."""
-    console.print(
-        "\n[bold yellow]Testing for incompatible BGP sessions[/bold yellow]"
-    )
+    console.print("\n[bold yellow]Testing for incompatible BGP sessions[/bold yellow]")
 
     assert_no_incompatible_bgp_sessions(
         snapshot=snap,
         session=bf,
     )
 
-    console.print(
-        "[bold green]All BGP sessions compatible![/bold green]"
-    )
+    console.print("[bold green]All BGP sessions compatible![/bold green]")
 
 
 def test_ospf_compatibility(snap, bf):
     """Test for incompatible OSPF sessions."""
-    console.print(
-        "\n[bold yellow]Testing for incompatible OSPF sessions[/bold yellow]"
-    )
+    console.print("\n[bold yellow]Testing for incompatible OSPF sessions[/bold yellow]")
 
     assert_no_incompatible_ospf_sessions(
         snapshot=snap,
         session=bf,
     )
 
-    console.print(
-        "[bold green]All OSPF sessions compatible![/bold green]"
-    )
+    console.print("[bold green]All OSPF sessions compatible![/bold green]")
 
 
 def test_bgp_unestablished(snap, bf):
     """Test for BGP sessions that are not established."""
-    console.print(
-        "\n[bold yellow]Testing for unestablished BGP sessions[/bold yellow]"
-    )
+    console.print("\n[bold yellow]Testing for unestablished BGP sessions[/bold yellow]")
 
     assert_no_unestablished_bgp_sessions(
         snapshot=snap,
         session=bf,
     )
 
-    console.print(
-        "[bold green]All BGP sessions are established![/bold green]"
-    )
+    console.print("[bold green]All BGP sessions are established![/bold green]")
 
 
 def test_undefined_references(snap, bf):
     """Test for undefined references."""
-    console.print(
-        "\n[bold yellow]Testing for undefined references[/bold yellow]"
-    )
+    console.print("\n[bold yellow]Testing for undefined references[/bold yellow]")
 
     assert_no_undefined_references(
         snapshot=snap,
         session=bf,
     )
 
-    console.print(
-        "[bold green]No undefined references found![/bold green]"
-    )
+    console.print("[bold green]No undefined references found![/bold green]")
 
 
 def main():
@@ -124,9 +103,7 @@ def main():
         overwrite=True,
     )
 
-    console.print(
-        f"[bold green]Snapshot initialized: {snap}[/bold green]"
-    )
+    console.print(f"[bold green]Snapshot initialized: {snap}[/bold green]")
 
     # Run network validation tests.
     test_duplicate_rtr_ids(snap, bf)
