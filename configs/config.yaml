@@ -1,8 +1,8 @@
 ---
 plugin: SimpleInventory
 options:
-  host_file: "./configs/hosts.yaml"
-  group_file: "./configs/groups.yaml"
+  host_file: ./configs/hosts.yaml
+  group_file: ./configs/groups.yaml
 runner:
   plugin: threaded
   options:
