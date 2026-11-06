@@ -136,6 +136,7 @@ ip route 20.20.20.0 255.255.255.0 1.1.1.2
 ip route vrf Mgmt-intf 0.0.0.0 0.0.0.0 10.10.20.254
 ip ssh bulk-mode 131072
 ip ssh server algorithm authentication password
+ip scp server enable
 no logging btrace
 !
 !
