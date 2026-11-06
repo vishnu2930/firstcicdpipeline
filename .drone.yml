@@ -13,6 +13,19 @@ steps:
   commands:
   - python3 batfishcheck.py
 
+- name: Check IP interfaces
+  image: vishnu2930/netauto
+  environment:
+    PASSWORD:
+      from_secret: PASSWORD
+    USER:
+      from_secret: USER
+    ENABLE_PASSWORD:
+      from_secret: ENABLE_PASSWORD
+  commands:
+  # - pip install -r requirements.txt
+  - python3 checkip.py
+
 - name: Precheck configuration diff
   image: vishnu2930/netauto
   environment:
