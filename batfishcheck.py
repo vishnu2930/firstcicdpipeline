@@ -85,7 +85,7 @@ def main():
     SNAPSHOT_DIR = "./snapshots/snapshot00"
 
     # Set BATFISH_HOST to the reachable Batfish server hostname/IP.
-    BATFISH_HOST = os.getenv("BATFISH_HOST", "localhost")
+    BATFISH_HOST = "localhost"
 
     console.print("[bold cyan]Connecting to Batfish...[/bold cyan]")
 
