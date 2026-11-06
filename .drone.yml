@@ -10,6 +10,8 @@ steps:
 
 - name: Batfish prechecks
   image: vishnu2930/netauto
+  environment:
+    BATFISH_HOST: batfish
   commands:
   - python3 batfishcheck.py
 
