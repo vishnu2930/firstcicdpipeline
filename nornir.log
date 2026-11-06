@@ -551,3 +551,66 @@ Traceback (most recent call last):
 nornir.core.exceptions.NornirSubTaskError: Subtask: Configuring R1! (failed)
 
 2026-11-06 20:18:52,561 -  nornir.core -     INFO -        run() - Running task 'deploy_network' with args {} on 1 hosts
+2026-11-06 20:47:48,346 -  nornir.core -     INFO -        run() - Running task 'deploy_network' with args {} on 1 hosts
+2026-11-06 20:47:55,597 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'Configuring R1!' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 48, in napalm_configure
+    device.commit_config(**commit_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 554, in commit_config
+    raise ReplaceConfigException(msg)
+napalm.base.exceptions.ReplaceConfigException: Candidate config could not be applied
+%Failed to backup current config
+
+2026-11-06 20:47:55,598 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'deploy_network' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/build.py", line 20, in deploy_network
+    task1_result = task.run(
+        name=f"Configuring {task.host.name}!",
+    ...<3 lines>...
+        replace=True,
+    )
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: Configuring R1! (failed)
+
+2026-11-06 21:02:54,540 -  nornir.core -     INFO -        run() - Running task 'deploy_network' with args {} on 1 hosts
+2026-11-06 21:03:01,939 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'Configuring R1!' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir_napalm/plugins/tasks/napalm_configure.py", line 48, in napalm_configure
+    device.commit_config(**commit_kwargs)
+    ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/napalm/ios/ios.py", line 554, in commit_config
+    raise ReplaceConfigException(msg)
+napalm.base.exceptions.ReplaceConfigException: Candidate config could not be applied
+Failed to apply command Building configuration...
+Aborting Rollback.
+
+Rollback failed.Reverting back to the original configuration: unix:-Nov--6-21-03-01.636-1 ...
+
+Total number of passes: 1
+Rollback Done
+
+The original configuration has been successfully restored.
+
+2026-11-06 21:03:01,941 - nornir.core.task -    ERROR -      start() - Host 'R1': task 'deploy_network' failed
+Traceback (most recent call last):
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 112, in start
+    r = self.task(self, **self.params)
+  File "/home/vishnu/cicd/build.py", line 20, in deploy_network
+    task1_result = task.run(
+        name=f"Configuring {task.host.name}!",
+    ...<3 lines>...
+        replace=True,
+    )
+  File "/home/vishnu/cicd/cicd_venv/lib/python3.14/site-packages/nornir/core/task.py", line 186, in run
+    raise NornirSubTaskError(task=run_task, result=r)
+nornir.core.exceptions.NornirSubTaskError: Subtask: Configuring R1! (failed)
+
+2026-11-06 21:05:08,174 -  nornir.core -     INFO -        run() - Running task 'deploy_network' with args {} on 1 hosts
