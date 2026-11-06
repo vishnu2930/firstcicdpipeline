@@ -28,7 +28,7 @@ def deploy_network(task):
 
 def main():
     """Used to run all the things"""
-    norn = InitNornir(config_file="configs/config.yml", core={"raise_on_error": True})
+    norn = InitNornir(config_file="configs/config.yaml", core={"raise_on_error": True})
     nornir_set_creds(norn)
     result = norn.run(task=deploy_network)
     print_result(result)
