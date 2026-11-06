@@ -13,7 +13,7 @@ steps:
   commands:
   - python3 batfishcheck.py
 
-- name: Check IP interfaces
+- name: Check IP interfaces1
   image: vishnu2930/netauto
   environment:
     PASSWORD:
