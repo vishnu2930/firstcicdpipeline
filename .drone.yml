@@ -8,6 +8,11 @@ steps:
   commands:
   - black . --check
 
+- name: Batfish prechecks
+  image: vishnu2930/netauto
+  commands:
+  - python3 batfishcheck.py
+
 - name: Check IP interfaces
   image: vishnu2930/netauto
   environment:
@@ -20,7 +25,3 @@ steps:
   commands:
   # - pip install -r requirements.txt
   - python3 checkip.py
-- name: Batfish prechecks
-  image: vishnu2930/netauto
-  commands:
-  - python3 batfishcheck.py
