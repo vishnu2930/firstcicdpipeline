@@ -3,9 +3,9 @@ import os
 
 def nornir_set_creds(norn, username="test", password=None):
     if not username:
-        username = "vishnu"
+        username = os.environ.get("USER")
     if not password:
-        password = "vishnu"
+        password = os.environ.get("PASSWORD")
 
     for host_obj in norn.inventory.hosts.values():
         host_obj.username = username
