@@ -13,6 +13,30 @@ steps:
   commands:
   - python3 batfishcheck.py
 
+- name: Precheck configuration diff
+  image: vishnu2930/netauto
+  environment:
+    PASSWORD:
+      from_secret: PASSWORD
+    USER:
+      from_secret: USER
+  commands:
+  - python3 build.py --dry_run
+
+- name: Deploy configuration
+  image: vishnu2930/netauto
+  environment:
+    PASSWORD:
+      from_secret: PASSWORD
+    USER:
+      from_secret: USER
+  commands:
+  - python3 build.py --no_dry_run
+  when:
+    branch:
+    - master
+    - main
+
 - name: Check IP interfaces
   image: vishnu2930/netauto
   environment:
